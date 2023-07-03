@@ -1,30 +1,29 @@
-const changePlayer = document.getElementById("players")
-const getButtons = document.getElementById("parent")
+const message = document.getElementById("players")
+const board = document.getElementById("parent")
 
-let box = [0,0,0,
-           0,0,0,
-           0,0,0]
+let boardState = [0, 0, 0,
+                  0, 0, 0,
+                  0, 0, 0];
 
-let player = 1
+let winStates = [];
 
-const playerSymbols = {1: "X", 2: "O"}
+winStates[0] = [1, 1, 1, 0, 0, 0, 0, 0, 0];
+winStates[1] = [0, 0, 0, 1, 1, 1, 0, 0, 0];
+winStates[2] = [0, 0, 0, 0, 0, 0, 1, 1, 1];
 
-function tickBox (i) {
-    box[i] = player
-    getButtons.children[i].innerText = playerSymbols[player]
+let player = 1;
 
-    if(player === 1) {
-        player++
+const playerSymbols = {1: "X", 2: "O"};
+
+function tickBox(i) {
+    if (boardState[i] === 0) {
+        boardState[i] = player;
+        board.children[i].innerText = playerSymbols[player];
+
+        if(player === 1) player++;
+        else if(player === 2) player--;
+
+        message.innerText = `Player ${player} turn`;
     }
-
-    else if(player === 2) {
-        player--
-    }
-changePlayer.innerText = `Player ${player} turn`
-console.log(box)
-
 }
-
-
-
 
