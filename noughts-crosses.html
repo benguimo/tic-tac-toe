@@ -6,7 +6,7 @@
 <script src="noughts-crosses.js" defer></script>
 <body>
     <header>
-        <h1>Noughts and Crosses</h1>
+        <h1>Tic-Tac-Toe</h1>
     </header>
 
 
@@ -34,23 +34,25 @@
     <p id="players">Player 1 turn</p>
 </section>
 <section>
-    <button onclick="reset()">
-    Reset</button>
+    <p class="score">
+       Player 1: <span id="player1-score">0</span>,
+       Player 2: <span id="player2-score">0</span>,
+       Ties: <span id="tie-score">0</span>
+</p>
 </section>
-<section>
 
-
-    <p>
-        SCORE: Player1 = <span id="player1-score">0</span>,
-               Player2 = <span id="player2-score">0</span>,
-               Ties = <span id="tie-score">0</span>
-    </p>
+<section class="reset-div" >
+    <button class="reset">Player vs CPU</button>
+    <button class="reset"  onclick="reset()"> Reset </button>
 </section>
-<section></section>
     </main>
 
 
 
-<footer>https://github.com/robert-matthew-brooks/fe-dom-mini-apps.git</footer>
+<footer>
+<p class="line">___________________________________</p>
+    Find this on: <br>
+    <a href="https://github.com/benguimo/tic-tac-toe">https://github.com/benguimo/tic-tac-toe</a> 
+</footer>
 </body>
 </html>

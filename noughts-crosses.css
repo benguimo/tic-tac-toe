@@ -1,30 +1,100 @@
-body {
-    font-family: Arial;
+html, body {
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-h1 {
-    font-size: 1.5em
+body {
+    font-family: Arial, sans-serif;
+    color: #fff;
+    margin: 0;
+    padding: 0;
 }
+
 
 
 .box {
- display: grid;
- grid-template-columns: 15vw 15vw 15vw;
- grid-template-rows: 15vw 15vw 15vw;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1em;
+    max-width: 90vw;
+    max-height: 90vh;
+    aspect-ratio: 1/1;
 }
 
-.box > button  {
-    font-size: 80%;
-    font-weight: bold;
-}
-
-
-#players{
+.box > button {
     font-size: 1.2em;
     font-weight: bold;
-    color: red;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 0.8em;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.box > button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
 
+.reset-div{
+    display: grid; 
+}
 
+.reset {
+    background-color: transparent;
+    color: #fff;
+    font-size: 1em;
+    font-weight: bold;
+    padding: 0.5em 1em;
+    border-radius: 5px;
+    border: 2px solid #fff;
+    margin-top: 1em;
+    transition: background-color 0.3s ease;
+    align-items: center;
+    align-self: center;
+}
 
+.reset:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+#players {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #ffeb3b;
+    text-align: center;
+    margin-top: 1em;
+}
+
+footer {
+    margin-top: 5em;
+    font-size: 0.8em;
+    text-align: center;
+    color: #888;
+}
+
+.line {
+    margin-bottom: 2em;
+}
+
+.score {
+    text-align: center;
+}
+
+a{
+    color: #888;
+}
