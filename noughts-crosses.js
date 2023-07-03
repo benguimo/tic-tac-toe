@@ -7,7 +7,10 @@ const player2Score = document.getElementById("player2-score")
 let boardState
 
 let winStates = [
-    [1, 1, 1, 0, 0, 0, 0, 0, 0],
+    [1, 1, 1,
+     0, 0, 0,
+     0, 0, 0],
+
     [0, 0, 0, 1, 1, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 1, 1, 1],
     [1, 0, 0, 1, 0, 0, 1, 0, 0],
@@ -29,10 +32,15 @@ let nextPlayer  = 1
 
 let scoreUpdate = {1 : 0, 2 : 0, tie: 0}
 
-function tickBox(i) {
-    if (!gameOver && boardState[i] === 0) {
-        boardState[i] = player;
-        board.children[i].innerText = playerSymbols[player];
+function foundZero(num) {
+    if (num === 0) return true;
+    else return false;
+}
+
+function tickBox(square) {
+    if (!gameOver && boardState[square] === 0) {
+        boardState[square] = player;
+        board.children[square].innerText = playerSymbols[player];
 
         if (checkWinStates(player)) {
             messageText = `PLAYER ${player} WINS!`
@@ -40,18 +48,22 @@ function tickBox(i) {
             player1Score.innerText = scoreUpdate[1]
             player2Score.innerText = scoreUpdate[2]
             gameOver = true
-            }
+        }
 
+        else if (boardState.some(foundZero) === false) {
+            messageText = `TIE!`
+            scoreUpdate.tie++
+            tieScore.innerText = scoreUpdate.tie
+            gameOver = true
+        }
 
-      else{  
-        if(player === 1) player = 2;
-        else if(player === 2) player = 1;
-        messageText = `Player ${player} turn`
-      }
-
+        else{  
+            if(player === 1) player = 2;
+            else if(player === 2) player = 1;
+            messageText = `Player ${player} turn`
+        }
 
         message.innerText = messageText
-      
     }
 }
 
@@ -68,29 +80,17 @@ function checkWinStates(player) {
 
         if (matches === 3) {
             return true
-           /*  console.log(message.innerText) */
         }
-
     }
     return false
-    
 }
-
-function score() {
-
-}
-
-
 
 
 function reset() {
-    //Able to play again (gameOver = false)
-    //Players to normal
-
 
      boardState = [0, 0, 0,
-        0, 0, 0,
-        0, 0, 0];
+                   0, 0, 0,
+                   0, 0, 0];
 
         for(const child of board.children) {
             child.innerText = ""
