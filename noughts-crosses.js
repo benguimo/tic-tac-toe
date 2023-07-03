@@ -5,11 +5,16 @@ let boardState = [0, 0, 0,
                   0, 0, 0,
                   0, 0, 0];
 
-let winStates = [];
-
-winStates[0] = [1, 1, 1, 0, 0, 0, 0, 0, 0];
-winStates[1] = [0, 0, 0, 1, 1, 1, 0, 0, 0];
-winStates[2] = [0, 0, 0, 0, 0, 0, 1, 1, 1];
+let winStates = [
+    [1, 1, 1, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 1, 1, 1, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 1, 1, 1],
+    [1, 0, 0, 1, 0, 0, 1, 0, 0],
+    [0, 1, 0, 0, 1, 0, 0, 1, 0],
+    [0, 0, 1, 0, 0, 1, 0, 0, 1],
+    [1, 0, 0, 0, 1, 0, 0, 0, 1],
+    [0, 0, 1, 0, 1, 0, 1, 0, 0]
+]
 
 let player = 1;
 
@@ -20,10 +25,28 @@ function tickBox(i) {
         boardState[i] = player;
         board.children[i].innerText = playerSymbols[player];
 
-        if(player === 1) player++;
-        else if(player === 2) player--;
+        checkWinStates(player);
+
+        if(player === 1) player = 2;
+        else if(player === 2) player = 1;
 
         message.innerText = `Player ${player} turn`;
     }
 }
 
+function checkWinStates(player) {
+    for (const winState of winStates) {
+        let matches = 0;
+
+        for (let i in winState) {
+
+            if (winState[i] === 1) {
+                if(boardState[i] === player) matches++;
+            }
+        }
+
+        if (matches === 3) {
+            console.log(`player ${player} wins`);
+        }
+    }
+}
