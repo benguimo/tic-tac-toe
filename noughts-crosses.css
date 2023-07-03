@@ -1,0 +1,18 @@
+.box {
+ display: grid;
+ grid-template-columns: 100px 100px 100px;
+ grid-template-rows: 100px 100px 100px;
+}
+
+button {
+    font-size: 40px;
+    font-weight: bold;
+    
+}
+
+
+#players{
+    font-size: 24px;
+    font-weight: bold;
+    color: red;
+}
